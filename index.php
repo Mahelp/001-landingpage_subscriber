@@ -44,7 +44,7 @@ if(!empty($_POST))
    // fin controle url
 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-    array_push($errors, 'البريد الالكتروني ضروري');
+    array_push($errors, 'البريد الالكتروني ضروري----');
   }
   
   if(count($errors) == 0)
