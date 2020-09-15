@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=yes">
+
+		<title>اشترك واربح</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="jquery.countdown/bootstrap.css" rel="stylesheet">
+    	
+	<style>
+    body{
+      padding-top: 50px;
+    }
+    </style>
+
+		<script type="text/javascript" src='jquery.countdown/jquery.js'></script>
+
+    </head>
+  <body>
+
+  <div class="jumbotron" >
+   <h1 style="text-align:center"> اشترك واربح 5 مشتركين مجانا علي قناتك في اليوتوب</h1>
+   <p style="text-align:center">الخدمة مجانية و صادقة لمساعدة اصحاب القنواة الصغيرة</p>
+ 
+   <h2 style="text-align:center" class="text-danger"> <g>       تنبيه  </g>                    
+   <u>لا نقوم بالخدمة اذا كانت القناة تحتوي علي محتويات غير مسموح بها<h2></u>
+   
+   </div>
+
+
+
+    <div class="container">
+
+
+  <div id="message" style="float: left; font-size: 18px; font-weight: bold; 
+      text-align: center;  color: #299106; padding-top: 8px;height=100%"></div>
+	  <br><br>
+
+  <div id="temps" style="font-size: 24px;display: none;">العملية في طور الانجاز ... انتظار <span id="count">10</span> ثانية</div>
+
+
+     <form id="form" action="index.php" method="post">
+         
+         
+        <input type="text" name="nom" value="" id="nom" placeholder="ادخل الاسم" class="form-control">
+         <br><br>
+       
+         <input type="text" name="url" value="" id="url" placeholder="ادخل رابط قناتك" class="form-control">
+         <br><br>
+
+         <input type="text" name="email" value="" id="email" placeholder="ادخل البريد الالكتروني" class="form-control">
+         <br><br>
+             
+         <br>
+         <div class="col text-center">
+          <a id="submit" class="btn btn-primary" class="col-lg-12"  value="اشتراك" href="#">اشتراك</a>
+
+		  <a id="test" class="btn btn-primary" class="col-lg-12"  value="test" href="#">test</a>
+          <div>
+         </form>  
+
+
+
+
+
+
+<script type="text/javascript">
+
+ $(function() {
+
+
+
+function validateEmail(email) {
+  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+
+$("#test").click(function(){
+
+
+ // alert('coco');
+  player2.playVideo();
+
+});
+
+$("#submit").click(function(){
+
+
+player.playVideo();//forcer play video
+ player2.playVideo();//forcer play video
+
+
+ email="&chargesfamille="+$('#email').val();
+
+ if (validateEmail(email)){
+
+
+
+  $('#temps').show();
+   
+  ////////////////
+    var counter = 10;
+
+  setInterval(function(){
+  counter--;
+    if (counter >= 0) {
+      span = document.getElementById("count");
+      span.innerHTML = counter;
+
+    }
+    // Display 'counter' wherever you want to display it.
+    if (counter === 0){
+        //alert('this is where it happens');
+
+		///////////
+
+		 $.ajaxSetup( { "async": false } );			  
+		       nom="&nom="+$('#nom').val();
+			   url="&url="+$('#url').val();
+			   email="&email="+$('#email').val();
+	
+$.getJSON("test.php?jsoncallback=?"+nom+url+email,
+ function(data){
+         for (var x = 0; x < data.length; x++) {  
+                // alert(data[x].salairebrutimpo);
+                
+				if(data[x].message=="ok")
+				   {
+				    $('#message').html("لقد تم تسجيل قناتكم بنجاح سيتم تنفيد طلبكم في أقرب وقت شكرا");
+                                        
+                   $('#temps').hide();
+				    $('#form').hide();
+					}
+                  }  
+                 
+        }           
+        
+        );
+
+		/////////////
+        ///clearInterval(counter);
+    } //fincount=0
+
+  }, 1000);
+
+
+
+} //ifvalidatemail
+else
+{    alert('البريد الالكتروني ضروري');  }
+
+
+});
+
+
+});</script>
+
+
+
+<br><br>
+
+     <div class="row">
+  
+<div class="col-sm-2"><img src="img/partenaire1.jpg" class="img-responsive" alt="Cinque Terre"></div>
+<div class="col-sm-2"><img src="img/partenaire3.jpg" class="img-responsive" alt="Cinque Terre"></div>
+<div class="col-sm-2"><img src="img/partenaire4.jpg" class="img-responsive" alt="Cinque Terre"></div>
+<div class="col-sm-2"><img src="img/partenaire3.jpg" class="img-responsive" alt="Cinque Terre"></div>
+<div class="col-sm-2"><img src="img/partenaire4.jpg" class="img-responsive" alt="Cinque Terre"></div>
+<div class="col-sm-2"><img src="img/partenaire1.jpg" class="img-responsive" alt="Cinque Terre"></div>
+
+  
+
+
+</div>
+
+
+
+     <br><br>
+
+
+
+<div class="row">
+  
+    <div class="col-sm-2">
+
+<!-- 1. The <iframe> (video player) will replace this <div> tag. -->
+<div id="player"></div>
+<div id="player2"></div>
+
+<script>
+  // 2. This code loads the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // 3. This function creates an <iframe> (and YouTube player)
+  //    after the API code downloads.
+  var player;
+  function onYouTubeIframeAPIReady() {
+
+    player = new YT.Player('player', {
+      width: '100%',
+      videoId: 'oWyuAa3kjYw',
+      playerVars: { 'autoplay': 1, 'playsinline': 1 },
+      events: {
+        'onReady': onPlayerReady
+      }
+
+    });
+
+
+  player2 = new YT.Player('player2', {
+      width: '100%',
+      videoId: 'MgqXPHSWfGI',
+      playerVars: { 'autoplay': 2, 'playsinline': 2 },
+      events: {
+        'onReady': onPlayerReady,
+		'onStateChange': onPlayerStateChange
+      }
+
+    });
+
+
+
+
+
+  }
+
+
+   function onPlayerStateChange(event) {
+       
+	  // alert(event.data);
+
+	   if (event.data==-1) 
+	       onPlayerReady(event);
+	   if (event.data==-3)
+	        onPlayerReady(event);
+
+		 if (event.data==-2)
+	        onPlayerReady(event);
+      }
+
+  // 4. The API will call this function when the video player is ready.
+  function onPlayerReady(event) {
+   // alert(event.target);
+     event.target.mute();
+    event.target.playVideo();
+  }
+</script>
+
+</div>
+</div>
+
+
+   <!-- Footer -->
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright
+   
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+
+
+
+    </div><!-- /.container -->
+
+
+  </body>
+</html>
+
