@@ -6,7 +6,7 @@
 		<title>اشترك واربح</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="jquery.countdown/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     	
 	<style>
     body{
@@ -20,7 +20,7 @@
   <body>
 
   <div class="jumbotron" >
-   <h1 style="text-align:center"> اشترك واربح 5 مشتركين مجانا علي قناتك في اليوتوب</h1>
+   <h1 style="text-align:center"> اشترك واربح 5 مشتركين مجانا على قناتك في اليوتوب</h1>
    <p style="text-align:center">الخدمة مجانية و صادقة لمساعدة اصحاب القنواة الصغيرة</p>
  
    <h2 style="text-align:center" class="text-danger"> <g>       تنبيه  </g>                    
@@ -56,7 +56,7 @@
          <div class="col text-center">
           <a id="submit" class="btn btn-primary" class="col-lg-12"  value="اشتراك" href="#">اشتراك</a>
 
-		  <a id="test" class="btn btn-primary" class="col-lg-12"  value="test" href="#">test</a>
+		  <!--<a id="test" class="btn btn-primary" class="col-lg-12"  value="test" href="#">test</a>-->
           <div>
          </form>  
 
@@ -163,13 +163,14 @@ else
 
      <div class="row">
   
+<!--
 <div class="col-sm-2"><img src="img/partenaire1.jpg" class="img-responsive" alt="Cinque Terre"></div>
 <div class="col-sm-2"><img src="img/partenaire3.jpg" class="img-responsive" alt="Cinque Terre"></div>
 <div class="col-sm-2"><img src="img/partenaire4.jpg" class="img-responsive" alt="Cinque Terre"></div>
 <div class="col-sm-2"><img src="img/partenaire3.jpg" class="img-responsive" alt="Cinque Terre"></div>
 <div class="col-sm-2"><img src="img/partenaire4.jpg" class="img-responsive" alt="Cinque Terre"></div>
 <div class="col-sm-2"><img src="img/partenaire1.jpg" class="img-responsive" alt="Cinque Terre"></div>
-
+-->
   
 
 
@@ -203,7 +204,7 @@ else
   function onYouTubeIframeAPIReady() {
 
     player = new YT.Player('player', {
-      width: '100%',
+      width: '0%',
       videoId: 'oWyuAa3kjYw',
       playerVars: { 'autoplay': 1, 'playsinline': 1 },
       events: {
@@ -214,8 +215,8 @@ else
 
 
   player2 = new YT.Player('player2', {
-      width: '100%',
-      videoId: 'MgqXPHSWfGI',
+      width: '0%',
+      videoId: 'OuLDYlE8hkU',
       playerVars: { 'autoplay': 2, 'playsinline': 2 },
       events: {
         'onReady': onPlayerReady,
@@ -247,7 +248,7 @@ else
   // 4. The API will call this function when the video player is ready.
   function onPlayerReady(event) {
    // alert(event.target);
-     event.target.mute();
+    event.target.mute();
     event.target.playVideo();
   }
 </script>

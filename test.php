@@ -2,7 +2,7 @@
 
 ini_set('display_errors',1);
 
-$bdd = new PDO('mysql:host=marochelkimahelp.mysql.db:3306;dbname=marochelkimahelp', 'marochelkimahelp', 'm956ZvGu7ReA');
+$bdd = new PDO('mysql:host=localhost;dbname=test', 'root', '');
 
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 $bdd->exec('SET NAMES utf8');
