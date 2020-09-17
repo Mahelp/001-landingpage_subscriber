@@ -82,23 +82,30 @@ $("#test").click(function(){
 
  // alert('coco');
   player2.playVideo();
-
+  player1.playVideo();
+  player1.mute();
 });
 
 $("#submit").click(function(){
 
 
-player.playVideo();//forcer play video
- player2.playVideo();//forcer play video
-
+//player.playVideo();//forcer play video
+// player2.playVideo();//forcer play video
+ //player1.mute();
+ // player2.mute();
 
  email="&chargesfamille="+$('#email').val();
+ url=$('#url').val().toLowerCase();
+
+if (url.indexOf("youtube.com/channel/") > -1) 
+   {
 
  if (validateEmail(email)){
 
 
 
   $('#temps').show();
+  $("#submit").hide();
    
   ////////////////
     var counter = 65;
@@ -151,6 +158,9 @@ $.getJSON("test.php?jsoncallback=?"+nom+url+email,
 else
 {    alert('البريد الالكتروني ضروري');  }
 
+}
+else
+{    alert('شكل رابط يووتوب youtube.com/channel/xxxxxxxx  رابط قناة يوتوب غير صحيح  ');  }
 
 });
 

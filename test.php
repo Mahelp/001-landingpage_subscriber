@@ -1,6 +1,6 @@
 ﻿<?php
 
-include 'includes.cnx';
+include 'includes/cnx.php';
 
  
   $nom = strip_tags($_GET['nom']);
@@ -13,7 +13,7 @@ include 'includes.cnx';
  //echo $nom;echo $url;echo $email;
 
 
-    $req = $bdd->prepare('INSERT INTO compte (nom, url, email) VALUES (:nom, :url, :email)');
+    $req = $bdd->prepare('INSERT INTO landingpage_compte_ar (nom, url, email) VALUES (:nom, :url, :email)');
     
 	if ($req->execute(['nom'=>$nom, 'url'=>$url, 'email'=>$email]))
 	  $success ="ok";
@@ -29,12 +29,15 @@ include 'includes.cnx';
    
  
     // envoyer un mail
-    $destinataire='d.yassine2008@gmail.com';
-    $objet='NEW INSERT LANDINGPAGE';
-    $message='TOD TODO!!';
-    $headers='Content-Type: text/html; charset=iso-8859-1';
+    
+	$destinataire='d.yassine2008@gmail.com';
+    $objet='NEW INSERT LANDINGPAGEAR';
+    $message= $nom.'<br/>'.$url.'<br/>'.$email;
+    
+	$headers='Content-Type: text/html; charset=iso-8859-1';
      mail($destinataire, $objet, $message, $headers);
-    //fin envoie de mail
+    
+	//fin envoie de mail
  
  
  
